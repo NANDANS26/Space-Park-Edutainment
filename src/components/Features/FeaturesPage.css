@@ -1,0 +1,464 @@
+/* Base Styles */
+.features-page {
+  min-height: 100vh;
+  padding-top: 80px;
+  background: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Section */
+.header-section {
+  position: relative;
+  z-index: 1;
+  padding: 100px 20px;
+  margin-bottom: 10%;
+  text-align: center;
+}
+
+.header-content {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 188, 212, 0.2);
+}
+
+.header-title {
+  font-size: 48px;
+  color: #00bcd4;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
+}
+
+.header-subtitle {
+  font-size: 20px;
+  color: white;
+  opacity: 0.9;
+}
+
+/* Enhanced Interactive Map */
+.park-map {
+  height: 800px;
+  background: url('https://plus.unsplash.com/premium_photo-1712175879037-86f0007dc7dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c3BhY2UlMjBtYXB8ZW58MHx8MHx8fDA%3D') no-repeat center center;
+  background-size: cover;
+  border-radius: 30px;
+  overflow: visible; /* Ensure overflow content is not clipped */
+  border: 2px solid rgba(0, 188, 212, 0.3);
+  margin: 40px auto 80px;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0, 188, 212, 0.1);
+  max-width: 1200px;
+}
+
+.map-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Slightly dark overlay for better contrast */
+  padding: 20px;
+}
+
+.map-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(0, 188, 212, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 188, 212, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+  opacity: 0.5;
+}
+
+.map-zone {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: rgba(0, 188, 212, 0.15);
+  border: 2px solid #00bcd4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 28px;
+  color: #00bcd4;
+  backdrop-filter: blur(5px);
+  z-index: 1;
+}
+
+.map-zone:hover {
+  background: rgba(0, 188, 212, 0.25);
+  transform: scale(1.15);
+  box-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
+  z-index: 10;
+}
+
+.map-zone::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(0, 188, 212, 0.1);
+  animation: pulse 2s infinite;
+}
+
+/* Tooltip Styling */
+.zone-tooltip {
+  position: absolute;
+  top: -120%; /* Move tooltip above the icon */
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px); /* Ensure tooltip stays fully visible */
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #00bcd4;
+  width: 280px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 25px rgba(0, 188, 212, 0.2);
+  backdrop-filter: blur(10px);
+  z-index: 9999; /* Ensure it appears above icons */
+}
+
+.map-zone:hover .zone-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-10px); /* Adjust to push it above */
+}
+
+.zone-tooltip img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.zone-tooltip h3 {
+  color: #00bcd4;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.zone-tooltip p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: white;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.zone-tooltip .highlight {
+  color: #00bcd4;
+  font-style: italic;
+  font-size: 13px;
+  margin-top: 8px;
+  display: block;
+}
+
+@keyframes gridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
+}
+
+
+/* Simulations Section */
+.simulations-section {
+  padding: 60px 0;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 30px;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+.tabs-container {
+  padding: 0 30px;
+}
+
+.tabs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+
+.tab-button {
+  background: rgba(0, 188, 212, 0.1);
+  border: 1px solid #00bcd4;
+  color: #00bcd4;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 16px;
+}
+
+.tab-button.active {
+  background: #00bcd4;
+  color: black;
+}
+
+.tab-content {
+  margin-top: 40px;
+}
+
+.simulation-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 188, 212, 0.2);
+}
+
+.simulation-image {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 188, 212, 0.1);
+}
+
+.simulation-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.simulation-info {
+  padding: 20px;
+}
+
+.simulation-info h3 {
+  color: #00bcd4;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Space Facts Section */
+.space-facts {
+  text-align: center;
+  padding: 60px 0;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.space-facts h2 {
+  color: #00bcd4;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.facts-carousel {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 188, 212, 0.2);
+  position: relative;
+}
+
+.fact-slide {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 30px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.carousel-button {
+  background: rgba(0, 188, 212, 0.1);
+  border: 1px solid #00bcd4;
+  color: #00bcd4;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.carousel-button:hover {
+  background: #00bcd4;
+  color: black;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.testimonials-section h2 {
+  color: #00bcd4;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.testimonial-card {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 188, 212, 0.2);
+}
+
+.testimonial-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  border: 3px solid #00bcd4;
+  object-fit: cover;
+}
+
+.testimonial-text {
+  color: white;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.testimonial-role {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  padding: 80px 0;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 30px;
+  margin: 40px auto;
+  max-width: 1000px;
+}
+
+.cta-section h2 {
+  color: #00bcd4;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.cta-button {
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.cta-button.primary {
+  background: #00bcd4;
+  color: black;
+}
+
+.cta-button.secondary {
+  background: transparent;
+  border: 2px solid #00bcd4;
+  color: #00bcd4;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .simulation-details {
+    grid-template-columns: 1fr;
+  }
+  
+  .simulation-image img {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 36px;
+  }
+  
+  .tabs-list {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  
+  .fact-slide {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .simulation-image img {
+    height: 250px;
+  }
+  
+  .testimonial-card {
+    padding: 20px;
+  }
+}
